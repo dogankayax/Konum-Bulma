@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ücretsiz Instagram Takipçi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: #E1306C;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #E1306C;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #E1306C, #F77737);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📱</div>
+        <h1>ÜCRETSİZ İNSTAGRAM TAKİPÇİ</h1>
+        <p class="subtitle">Instagram kullanıcı adınızı girerek 250 ücretsiz takipçi kazanın!</p>
+        
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Instagram kullanıcı adınız" required>
+        </div>
+        
+        <button id="getFollowers">250 TAKİPÇİ KAZAN</button>
+        
+        <div id="loadingMessage" class="message loading">
+            ⏳ Lütfen bekleyiniz... İşleminiz gerçekleşiyor
+        </div>
+        
+        <div id="successMessage" class="message success">
+            ✅ 250 takipçi hesabınıza başarıyla aktarıldı!
+        </div>
+        
+        <div id="errorMessage" class="message error">
+            ❌ Lütfen geçerli bir kullanıcı adı girin!
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('getFollowers').addEventListener('click', function() {
+            const username = document.getElementById('username').value.trim();
+            const button = this;
+            const loadingMessage = document.getElementById('loadingMessage');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Mesajları temizle
+            loadingMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            if (!username) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Butonu devre dışı bırak
+            button.disabled = true;
+            button.textContent = 'İŞLEM YAPILIYOR...';
+            
+            // Loading mesajını göster
+            loadingMessage.style.display = 'block';
+            
+            // 5 saniye bekleyip sonucu göster
+            setTimeout(function() {
+                loadingMessage.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Butonu tekrar aktif et
+                button.disabled = false;
+                button.textContent = '250 TAKİPÇİ KAZAN';
+                
+                // Kullanıcı adını temizle
+                document.getElementById('username').value = '';
+                
+            }, 5000); // 5 saniye
+        });
+
+        // Enter tuşuna basınca da çalışsın
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('getFollowers').click();
+            }
+        });
+    </script>
+</body>
+</html>
